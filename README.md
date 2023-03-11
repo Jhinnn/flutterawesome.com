@@ -136,8 +136,47 @@ Table(
   ),
 ```
 
+##### 5.quick app create
+```
+Scaffold(
+      body: <Widget>[
+        _buildVeggieList(dateString),
+        FavoritesScreen(),
+        SearchScreen(),
+        SettingScreen(),
+      ][currentPageIndex],
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.bookmark),
+            icon: Icon(Icons.bookmark_border),
+            label: 'My Garden',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+      appBar: currentPageIndex == 1 ? AppBar(title: Text("My Garden")) : null,
+    );
+ ```
 
-##### 5.search example
+##### 6.search example
 ```
 import 'package:flutter/material.dart';
 import 'package:veggieseasons_adaptive/data/veggie.dart';
